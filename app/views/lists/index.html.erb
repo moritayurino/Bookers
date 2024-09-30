@@ -1,0 +1,20 @@
+<h1>Books</h1>
+<% @lists.each do |list| %>
+  <h4>Title</h4>
+  <span>
+  <%= link_to list.title, list_path(list.id) %>
+  </span>
+  <h4>Body</h4>
+  <span><%= @list.body %></span>
+  <%= link_to "edit", edit_list_path(@list.id) %>
+<% end %>
+
+  <h2>New book</h2>
+<%= form_with model: @list, url: '/lists', method: :post do |f| %>
+  <p>Title</p>
+  <%= f.text_field :title %>
+	<p>Body</p>
+  <%= f.text_area :body %>
+	<%= f.submit 'Create Book' %>
+  
+<% end %>
